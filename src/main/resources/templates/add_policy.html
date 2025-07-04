@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Policy - Admin</title>
+</head>
+<body>
+    <h2>Add New Insurance Policy</h2>
+    <form th:action="@{/admin/add-policy}" th:object="${policy}" method="post">
+        <label>Name:</label>
+        <input type="text" th:field="*{name}" required/><br/>
+
+        <label>Description:</label>
+        <input type="text" th:field="*{description}" required/><br/>
+
+        <label>Vehicle Type:</label>
+        <select th:field="*{vehicleType}">
+            <option value="Bike">Bike</option>
+            <option value="Car">Car</option>
+        </select><br/>
+
+        <label>Premium Amount:</label>
+        <input type="number" th:field="*{premiumAmount}" required/><br/>
+
+        <label>Duration:</label>
+        <input type="text" th:field="*{duration}" placeholder="e.g., 1 Year" required/><br/>
+
+        <button type="submit">Add Policy</button>
+    </form>
+    <a th:href="@{/admin/policies}">Back to Policy List</a>
+</body>
+</html>

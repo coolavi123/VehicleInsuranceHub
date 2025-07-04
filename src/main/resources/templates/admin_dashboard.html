@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Dashboard - Vehicle Insurance</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #cfd9df, #e2ebf0);
+            margin: 0;
+            padding: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+        .dashboard-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            width: 95%;
+            max-width: 600px;
+            text-align: center;
+            animation: fadeIn 0.5s ease;
+        }
+        h1 {
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        .card {
+            background: #f7f9fa;
+            flex: 1;
+            min-width: 150px;
+            padding: 1rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: transform 0.3s, background 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            background: #e2f0fb;
+        }
+        .card h2 {
+            margin: 0.5rem 0;
+            color: #007bff;
+            font-size: 2rem;
+        }
+        .card p {
+            margin: 0;
+            color: #555;
+            font-weight: 600;
+        }
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            align-items: center;
+        }
+        .btn {
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 1.2rem;
+            border-radius: 50px;
+            width: 80%;
+            max-width: 250px;
+            font-weight: 600;
+            transition: background 0.3s, transform 0.2s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .btn:hover {
+            background: #0056b3;
+            transform: translateY(-3px);
+        }
+        .btn.logout {
+            background: #dc3545;
+        }
+        .btn.logout:hover {
+            background: #a71d2a;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <h1><i class="fas fa-user-shield"></i> Admin Dashboard</h1>
+        <div class="stats">
+            <div class="card">
+                <h2 th:text="${totalUsers}">0</h2>
+                <p>Total Users:5</p>
+            </div>
+            <div class="card">
+                <h2 th:text="${totalVehicles}">0</h2>
+                <p>Total Vehicles:6</p>
+            </div>
+            <div class="card">
+                <h2 th:text="${totalInsurances}">0</h2>
+                <p>Total Insurances :7</p>
+            </div>
+        </div>
+        <div class="buttons">
+            <a th:href="@{/admin/view-users}" class="btn"><i class="fas fa-users-cog"></i> Manage Users</a>
+            <a th:href="@{/admin/manage-vehicles}" class="btn"><i class="fas fa-car"></i> Manage Vehicles</a>
+<!--            <a th:href="@{/admin/view-policies}" class="btn"><i class="fas fa-file-alt"></i> Manage Insurances</a>-->
+            <a th:href="@{/logout}" class="btn logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+    </div>
+</body>
+</html>

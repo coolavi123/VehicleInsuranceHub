@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Buy Insurance - Vehicle Insurance Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #fddb92, #d1fdff);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+        }
+        h2 {
+            color: #333;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        table {
+            width: 95%;
+            max-width: 900px;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: center;
+        }
+        th {
+            background: #007bff;
+            color: white;
+            font-weight: 600;
+        }
+        tr:nth-child(even) {
+            background: #f3f3f3;
+        }
+        tr:hover {
+            background: #e0f7fa;
+            transition: background 0.3s;
+        }
+        .buy-btn {
+            text-decoration: none;
+            background: #007bff;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: background 0.3s, transform 0.2s;
+            display: inline-block;
+        }
+        .buy-btn:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .back-btn {
+            text-decoration: none;
+            background: #6c757d;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 500;
+            margin-top: 1.5rem;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .back-btn:hover {
+            background: #5a6268;
+            transform: translateY(-2px);
+        }
+        @media (max-width: 600px) {
+            th, td {
+                padding: 8px 10px;
+                font-size: 0.9rem;
+            }
+            h2 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h2><i class="fas fa-file-medical"></i> Available Insurance Policies for <span th:text="${vehicleType}"></span></h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Premium</th>
+            <th>Duration</th>
+            <th>Action</th>
+        </tr>
+        <tr th:each="policy : ${policies}">
+            <td th:text="${policy.name}"></td>
+            <td th:text="${policy.description}"></td>
+            <td>₹<span th:text="${policy.premiumAmount}"></span></td>
+            <td th:text="${policy.duration}"></td>
+            <td>
+                <a th:href="@{'/buy-policy/' + ${policy.id} + '/' + 1}" class="buy-btn">
+                    <i class="fas fa-shopping-cart"></i> Buy Now
+                </a>
+            </td>
+        </tr>
+    </table>
+    <a th:href="@{/dashboard}" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add New Insurance - Vehicle Insurance Hub</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #f0f4ff, #ffffff);
+            min-height: 100vh;
+            padding-top: 50px;
+        }
+        .container {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 600px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
+        h2 {
+            text-align: center;
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+        .btn-primary {
+            width: 100%;
+            background-color: #007bff;
+            border: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #007bff;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        label {
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>➕ Add New Insurance</h2>
+    <form th:action="@{/insurances/add}" method="post" th:object="${insurance}">
+        <div class="mb-3">
+            <label for="policyNumber" class="form-label">Policy Number</label>
+            <input type="text" th:field="*{policyNumber}" class="form-control" id="policyNumber" placeholder="Enter Policy Number" required>
+        </div>
+        <div class="mb-3">
+            <label for="insuranceCompany" class="form-label">Insurance Company</label>
+            <input type="text" th:field="*{insuranceCompany}" class="form-control" id="insuranceCompany" placeholder="e.g., 1st Party, 2nd Party" required>
+        </div>
+        <div class="mb-3">
+            <label for="startDate" class="form-label">Start Date</label>
+            <input type="date" th:field="*{startDate}" class="form-control" id="startDate" required>
+        </div>
+        <div class="mb-3">
+            <label for="endDate" class="form-label">End Date</label>
+            <input type="date" th:field="*{endDate}" class="form-control" id="endDate" required>
+        </div>
+        <div class="mb-3">
+            <label for="premiumAmount" class="form-label">Premium Amount</label>
+            <input type="number" step="0.01" th:field="*{premiumAmount}" class="form-control" id="premiumAmount" placeholder="e.g., 5000" required>
+        </div>
+        <div class="mb-3">
+            <label for="vehicle" class="form-label">Vehicle</label>
+            <select th:field="*{vehicle}" class="form-select" id="vehicle" required>
+                <option th:each="vehicle : ${vehicles}" th:value="${vehicle.id}" th:text="${vehicle.vehicleNumber}"></option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Insurance</button>
+    </form>
+    <a th:href="@{/insurances}" class="back-link">⬅️ Back to Insurances</a>
+</div>
+</body>
+</html>

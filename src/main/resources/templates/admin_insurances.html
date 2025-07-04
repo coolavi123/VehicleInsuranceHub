@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin - Manage Insurances</title>
+</head>
+<body>
+    <h2>All Insurances</h2>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Policy Number</th>
+            <th>Company</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Premium</th>
+            <th>Vehicle Number</th>
+        </tr>
+        <tr th:each="insurance : ${insurances}">
+            <td th:text="${insurance.id}"></td>
+            <td th:text="${insurance.policyNumber}"></td>
+            <td th:text="${insurance.insuranceCompany}"></td>
+            <td th:text="${insurance.startDate}"></td>
+            <td th:text="${insurance.endDate}"></td>
+            <td th:text="${insurance.premiumAmount}"></td>
+            <td th:text="${insurance.vehicle.vehicleNumber}"></td>
+        </tr>
+    </table>
+    <a th:href="@{/admin/dashboard}">Back to Admin Dashboard</a>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin - Manage Users</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f0f4f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: #ffffff;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            width: 90%;
+            max-width: 800px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #1a202c;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: center;
+        }
+        th {
+            background: #38b2ac; /* Teal */
+            color: white;
+            font-weight: 600;
+        }
+        tr:nth-child(even) {
+            background: #e6fffa;
+        }
+        tr:nth-child(odd) {
+            background: #f7fafc;
+        }
+        a.button {
+            display: inline-block;
+            text-decoration: none;
+            color: white;
+            background: #ed8936; /* Orange */
+            padding: 8px 14px;
+            border-radius: 6px;
+            transition: background 0.3s ease, transform 0.2s ease;
+            font-size: 14px;
+        }
+        a.button:hover {
+            background: #dd6b20;
+            transform: translateY(-2px);
+        }
+        .back-link {
+            display: inline-block;
+            text-decoration: none;
+            color: white;
+            background: #4a5568; /* Gray */
+            padding: 10px 16px;
+            border-radius: 6px;
+            transition: background 0.3s ease, transform 0.2s ease;
+            font-size: 15px;
+            text-align: center;
+        }
+        .back-link:hover {
+            background: #2d3748;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>All Registered Users</h2>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Action</th>
+            </tr>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.id}"></td>
+                <td th:text="${user.email}"></td>
+                <td th:text="${user.role}"></td>
+                <td>
+                    <a th:href="@{'/admin/delete-user/' + ${user.id}}" class="button">Delete</a>
+                </td>
+            </tr>
+        </table>
+        <div style="text-align:center;">
+            <a th:href="@{/admin/dashboard}" class="back-link">Back to Admin Dashboard</a>
+        </div>
+    </div>
+</body>
+</html>

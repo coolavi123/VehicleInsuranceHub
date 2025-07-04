@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User Dashboard - Vehicle Insurance Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #e0ecfb, #f5f7fa);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .dashboard-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            width: 90%;
+            max-width: 800px;
+            text-align: center;
+            animation: slideUp 0.5s ease;
+        }
+        h1 {
+            margin-bottom: 1.5rem;
+            color: #333;
+            font-weight: 600;
+        }
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+            text-decoration: none;
+            color: #333;
+            transition: transform 0.2s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.12);
+        }
+        .card i {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #5563de;
+        }
+        .card p {
+            margin: 0;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <h1>Welcome, <span th:text="${userName}">User</span>Avinash</h1>
+        <div class="card-grid">
+            <a th:href="@{/buy-insurance}" class="card">
+                <i class="fas fa-shopping-cart"></i>
+                <p>Buy Insurance</p>
+            </a>
+            <a th:href="@{/purchased-policies}" class="card">
+                <i class="fas fa-file-invoice-dollar"></i>
+                <p>View Purchased Policies</p>
+            </a>
+            <a th:href="@{/vehicles}" class="card">
+                <i class="fas fa-car"></i>
+                <p>View Vehicles</p>
+            </a>
+            <a th:href="@{/insurances}" class="card">
+                <i class="fas fa-clipboard-list"></i>
+                <p>View Available Insurances</p>
+            </a>
+            <a th:href="@{/logout}" class="card">
+                <i class="fas fa-sign-out-alt"></i>
+                <p>Logout</p>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

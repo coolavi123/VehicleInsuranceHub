@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Sign Up - Vehicle Insurance Hub</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #74abe2, #5563de);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+        .card {
+            background: white;
+            padding: 2rem 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 340px;
+            animation: slideUp 0.5s ease;
+        }
+        h2 {
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        p {
+            margin-bottom: 1.2rem;
+            color: #555;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 90%;
+            padding: 10px;
+            margin: 0.5rem 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            transition: border 0.3s;
+        }
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="password"]:focus {
+            border: 1px solid #5563de;
+            outline: none;
+        }
+        select {
+            width: 95%;
+            padding: 10px;
+            margin: 0.5rem 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            transition: border 0.3s;
+        }
+        select:focus {
+            border: 1px solid #5563de;
+            outline: none;
+        }
+        button {
+            background: #5563de;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 1rem;
+            font-size: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+        button:hover {
+            background: #3844b0;
+            transform: translateY(-2px);
+        }
+        a {
+            color: #5563de;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        a:hover {
+            color: #3844b0;
+        }
+        .message {
+            color: red;
+            margin-bottom: 10px;
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Sign Up</h2>
+        <p>Create a new account to continue</p>
+
+        <div th:if="${error}" class="message">
+            <p th:text="${error}"></p>
+        </div>
+
+        <form th:action="@{/register}" method="post">
+            <input type="text" name="name" placeholder="Name" required><br>
+            <input type="email" name="email" placeholder="Email" required><br>
+            <input type="password" name="password" placeholder="Password" required><br>
+            <select name="role" required>
+                <option value="" disabled selected>Select Role</option>
+                <option value="USER">USER</option>
+                <option value="ADMIN">ADMIN</option>
+            </select><br>
+            <button type="submit">Sign Up</button>
+        </form>
+        <p>Already have an account? <a th:href="@{/login}">Login here</a></p>
+    </div>
+</body>
+</html>

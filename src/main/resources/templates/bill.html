@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Insurance Bill</title>
+</head>
+<body>
+    <h2>Insurance Policy Bill</h2>
+    <p>Policy Number: <span th:text="${insurance.policyNumber}"></span></p>
+    <p>Insurance Company: <span th:text="${insurance.insuranceCompany}"></span></p>
+    <p>Start Date: <span th:text="${insurance.startDate}"></span></p>
+    <p>End Date: <span th:text="${insurance.endDate}"></span></p>
+    <p>Premium Amount: ₹<span th:text="${insurance.premiumAmount}"></span></p>
+    <p>Vehicle Number: <span th:text="${insurance.vehicle.vehicleNumber}"></span></p>
+
+    <button onclick="window.print()">Download / Print Bill</button>
+</body>
+</html>

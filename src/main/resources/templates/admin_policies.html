@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin - Manage Policies</title>
+</head>
+<body>
+    <h2>Manage Insurance Policies</h2>
+    <a th:href="@{/admin/add-policy}">Add New Policy</a>
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Vehicle Type</th>
+            <th>Premium</th>
+            <th>Duration</th>
+        </tr>
+        <tr th:each="policy : ${policies}">
+            <td th:text="${policy.name}"></td>
+            <td th:text="${policy.description}"></td>
+            <td th:text="${policy.vehicleType}"></td>
+            <td th:text="${policy.premiumAmount}"></td>
+            <td th:text="${policy.duration}"></td>
+        </tr>
+    </table>
+    <a th:href="@{/admin/dashboard}">Back to Admin Dashboard</a>
+</body>
+</html>

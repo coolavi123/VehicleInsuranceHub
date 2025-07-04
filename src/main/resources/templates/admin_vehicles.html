@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin - Manage Vehicles</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f0f4f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: #ffffff;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            width: 90%;
+            max-width: 800px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #1a202c;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: center;
+        }
+        th {
+            background: #4299e1; /* Blue */
+            color: white;
+            font-weight: 600;
+        }
+        tr:nth-child(even) {
+            background: #ebf8ff;
+        }
+        tr:nth-child(odd) {
+            background: #f7fafc;
+        }
+        .back-link {
+            display: inline-block;
+            text-decoration: none;
+            color: white;
+            background: #4a5568; /* Gray */
+            padding: 10px 16px;
+            border-radius: 6px;
+            transition: background 0.3s ease, transform 0.2s ease;
+            font-size: 15px;
+            text-align: center;
+        }
+        .back-link:hover {
+            background: #2d3748;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>All Vehicles</h2>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Vehicle Number</th>
+                <th>Type</th>
+                <th>Model</th>
+                <th>Owner Name</th>
+            </tr>
+            <tr th:each="vehicle : ${vehicles}">
+                <td th:text="${vehicle.id}"></td>
+                <td th:text="${vehicle.vehicleNumber}"></td>
+                <td th:text="${vehicle.type}"></td>
+                <td th:text="${vehicle.model}"></td>
+                <td th:text="${vehicle.ownerName}"></td>
+            </tr>
+        </table>
+        <div style="text-align:center;">
+            <a th:href="@{/admin/dashboard}" class="back-link">Back to Admin Dashboard</a>
+        </div>
+    </div>
+</body>
+</html>
